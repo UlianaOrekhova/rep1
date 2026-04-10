@@ -1,2 +1,2 @@
-# rep1
-1
+# izmen
+rectangle izm

@@ -3,16 +3,19 @@
 #include "rectangle.h"
 #include "trapezoid.h"
 #include "Circle.h"
+#include <windows.h>
 using namespace std;
 
 int main()
 {
-    setlocale(LC_ALL, "RU");
+    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
+
     int vibor;
-    cout << "Выберите номер фигуры, данные которой вы хотите узнать: \n1) Прямоугольник \n2) Трапеция\n3) Окружность"<< endl;
+    cout << "Выберите номер фигуры, данные которой вы хотите узнать: \n1) Прямоугольник \n2) Трапеция\n3) Окружность" << endl;
     cin >> vibor;
-    
-    switch(vibor)
+
+    switch (vibor)
     {
     case 1: {
         double leight;
@@ -21,19 +24,20 @@ int main()
         double height;
         cout << "Ширина: ";
         cin >> height;
-	if (leight <= 0 or height <= 0)
+        if (leight <= 0 or height <= 0)
         {
-          cout << "Неверные данные";
-          break;
+            cout << "Неверные данные";
+            break;
+        }
+        {
+            double perim = RectPerim(leight, height);
+            double squar = RectSquar(leight, height);
+            double diag = RectLgOfDiag(leight, height);
 
-        double perim = RectPerim(leight, height);
-        double squar = RectSquar(leight, height);
-        double diag = RectLgOfDiag(leight, height);
+            cout << "Периметр: " << perim << endl << "Площадь: " << squar << endl << "Диагональ: " << diag;
 
-        cout << "Периметр: " << perim << endl << "Площадь: " << squar << endl << "Диагональ: " << diag;
-    }
-        break;
-            
+            break;
+        }
     case 2: {
         double a, b, c, d, height;
 
@@ -47,27 +51,22 @@ int main()
         cin >> d;
         cout << "Введите высоту трапеции: ";
         cin >> height;
-	if (a <= 0 or b <= 0 or c <= 0 or d <= 0 or height <= 0)
+        if (a <= 0 or b <= 0 or c <= 0 or d <= 0 or height <= 0)
         {
-          cout << "Неверные данные";
-          break;
+            cout << "Неверные данные";
+            break;
         }
-        if ((a+b)>(c+d))
+        if (a == b)
         {
-          cout << "Неверные данные";
-          break;
+            cout << "Неверные данные";
+            break;
         }
-        if (a==b)
+        if ((c + d) <= abs(a - b))
         {
-          cout << "Неверные данные";
-          break;
+            cout << "Неверные данные";
+            break;
         }
-        if ((c+d)<=abs(a-b))
-        {
-          cout << "Неверные данные";
-          break;
-        }
-	
+
         // Вычисления
         double perimeter = TrapPerim(a, b, c, d);
         double area = TrapArea(a, b, height);
@@ -85,14 +84,14 @@ int main()
         cin >> a;
         cout << "Введите внутренний угол искомого сектора (градусная мера угла): ";
         cin >> b;
-	if (a <= 0)
+        if (a <= 0)
         {
-          cout << "Неверные данные";
-          break;
+            cout << "Неверные данные";
+            break;
         }
-        if(b<0) 
+        if (b < 0)
         {
-          b=b*(-1);
+            b = b * (-1);
         }
 
         // Вычисления
@@ -105,15 +104,16 @@ int main()
         cout << "Площадь круга: " << area << endl;
         cout << "Площадь кругового сектора : " << sector << endl;
     }
-        break;
-    
-       
-        default:
-            cout << "Неизвестная команда";
-    }
-    
-    
+          break;
 
-    
-    return 0;
+
+    default:
+        cout << "Неизвестная команда";
+    }
+
+
+
+
+          return 0;
+    }
 }

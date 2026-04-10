@@ -1,38 +1,14 @@
-﻿#include <iostream>
 #include <cmath>
-
-using namespace std;
-
-double calculatePerimeter(double a, double b) {
-    return 2 * (a + b);
+#include <cmath.h>
+double RectPerim (double lng, double height)
+{
+return 2*(lng + height);
 }
-
-double calculateArea(double a, double b) {
-    return a * b;
+double RectSquar (double lng, double height)
+{
+return lng*height;
 }
-
-double calculateDiagonal(double a, double b) {
-    return sqrt(a * a + b * b);
-}
-
-int main() {
-    setlocale(LC_ALL, "Russian");
-
-    double a, b;
-
-    cout << "Введите длину и ширину прямоугольника через пробел: ";
-    cin >> a >> b;
-
-    // Проверка на корректность ввода (стороны должны быть больше нуля)
-    if (a <= 0 || b <= 0) {
-        cout << "Ошибка: стороны прямоугольника должны быть положительными числами." << endl;
-        return 1;
-    }
-
-    cout << "---------------------------------" << endl;
-    cout << "Периметр: " << calculatePerimeter(a, b) << endl;
-    cout << "Площадь: " << calculateArea(a, b) << endl;
-    cout << "Длина диагонали: " << calculateDiagonal(a, b) << endl;
-
-    return 0;
+double RectLgOfDiag (double lng, double height)
+{
+return sqrt(pow(lng,2)+pow(height,2));
 }

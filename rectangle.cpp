@@ -4,7 +4,7 @@ double RectPerim (double lng, double height)//Find Perimetr
 {
 return 2*(lng + height);
 }
-double RectSquar (double lng, double height)
+double RectSquar (double lng, double height)// ploshad
 {
 return lng*height;
 }

@@ -1,6 +1,6 @@
 #include <cmath>
 #include <cmath.h>
-double RectPerim (double lng, double height)
+double RectPerim (double lng, double height)//Find Perimetr 
 {
 return 2*(lng + height);
 }
